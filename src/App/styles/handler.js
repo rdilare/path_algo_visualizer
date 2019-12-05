@@ -10,7 +10,6 @@ export class Handler extends React.Component {
   }
   toggleClick = () => {
     this.setState({ isClick: !this.state.isClick });
-    console.log("toggle called")
   }
 
   loop=()=>{
@@ -37,11 +36,10 @@ export class Handler extends React.Component {
     const isClick = this.props.isClick;
     var cell_w=this.props.cell_w;
 
-    console.log(cell_w);
 
     return (
-        <div id={this.props.id} onClick={()=>this.props.onClick}  style={{display:"inline-block",margin:'0px',border:"0px"}} >
-        {isClick=='b' ? (
+        <div id={this.props.id} onClick={()=>this.props.onClick(this.props.rn,this.props.cn)}  style={{display:"inline-block",margin:'0px',border:"0px"}} >
+        {isClick==='b' ? (
           <Box w={cell_w} />
         ) : (
           <BlankBox w={cell_w} />

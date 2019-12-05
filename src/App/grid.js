@@ -11,8 +11,6 @@ export class Grid extends React.Component {
     	var cell_w=(Number(this.props.w.slice(0,-2))-5)/cols + 'vw';
     	var cell_h=this.props.h/rows;
 
-    	console.log(cell_w);
-
 	function getid(i,j){
     	return String([i,j]);
   	};
@@ -22,7 +20,7 @@ export class Grid extends React.Component {
 	      {Array(rows).fill(1).map((x,i)=>{
 	      		return (<div id={getid(i,5)} style={{margin:'-3px',display:"inline-block",position:'relative'}} key={i}>
 			      			{Array(cols).fill(1).map((x,j)=>{
-			      				return <Handler cell_w={cell_w} id={j} onClick={()=>this.props.onClick(i,j)} isClick={this.props.isClick[i][j]} key={j}/>;
+			      				return <Handler rn={i} cn={j} cell_w={cell_w} id={j} onClick={(i,j)=>this.props.onClick(i,j)} isClick={this.props.isClick[i][j]} key={j}/>;
 			      				})
 			      			}
 			      		</div>);
