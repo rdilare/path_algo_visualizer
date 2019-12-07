@@ -20,6 +20,7 @@ export class Panel extends React.Component {
 			<option value="c">C</option>
 			<option value="d">D</option>
       	</select>
+        <button onClick={this.props.onClick}>Animate</button>
       </div>
     );
 }

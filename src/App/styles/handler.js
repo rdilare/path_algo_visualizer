@@ -2,6 +2,7 @@ import React from 'react';
  
 import Box from './Box';
 import BlankBox from './BlankBox'
+import Wall from './wall';
  
 export class Handler extends React.Component {
   constructor(props) {
@@ -33,20 +34,30 @@ export class Handler extends React.Component {
   }
  
   render() {
-    const isClick = this.props.isClick;
+    const cellState = this.props.isClick;
     var cell_w=this.props.cell_w;
+    var cell_arr = [<Box w={cell_w} />,<BlankBox w={cell_w} />, <Wall w={cell_w} />];
+    var options = ['a', 'b', 'c'];
+
+    var index = options.indexOf(cellState);
+
+    var box = cell_arr[index];
 
 
     return (
-        <div id={this.props.id} onClick={()=>this.props.onClick(this.props.rn,this.props.cn)}  style={{display:"inline-block",margin:'0px',border:"0px"}} >
-        {isClick==='b' ? (
-          <Box w={cell_w} />
-        ) : (
-          <BlankBox w={cell_w} />
-        )}
+        <div id={this.props.id} onClick={()=>this.props.onClick(this.props.rn,this.props.cn)}  style={{display:"inline-block",margin:'0px',border:".1px"}} >
+
+        {index!=-1?(box):(<BlankBox w={cell_w}/>)}
       </div>
     );
   }
 }
  
 export default Handler;
+
+
+        // {cellState==='b' ? (
+        //   <Box w={cell_w} />
+        // ) : (
+        //   <Wall w={cell_w} />
+        // )}
