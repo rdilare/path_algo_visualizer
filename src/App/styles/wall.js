@@ -10,10 +10,11 @@ export const Wall = styled.div`
   position: relative;
   margin:0px;
   border:.1px solid #0540;
+  box-sizing: border-box;
   z-index:2;
 
   // animation: ${keyFrameWall} 2s ease-in-out 0s infinite;
-  animation: ${keyFrameWall} .3s ease-out 0s 1;
+  animation: ${keyFrameWall} .5s ease-in-out 0s 1;
 `
  
 export default Wall;

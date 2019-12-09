@@ -40,7 +40,7 @@ while(!pq.empty()){
     var neighbour = new QElement(0,0);
     neighbour.x = current.x+a[0];
     neighbour.y = current.y+a[1];
-    if(neighbour.x>4 || neighbour.x<0 || neighbour.y>6 || neighbour.y<0){
+    if(neighbour.x>=map.length || neighbour.x<0 || neighbour.y>=map[0].length || neighbour.y<0){
       continue;
     }
     if(map[neighbour.x][neighbour.y]==1){
@@ -76,9 +76,10 @@ if (dist(current,goal)==0){
   }
 }else{
   console.log('No Path');
-  Path = NaN;
+  Path = [];
 }
-Path.push([start.x, start.y])
+// Path.push([start.x, start.y])
+Path.shift()
 return Path;
 }
 

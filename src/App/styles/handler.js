@@ -3,6 +3,9 @@ import React from 'react';
 import Box from './Box';
 import BlankBox from './BlankBox'
 import Wall from './wall';
+import SearchedBox from './searched';
+import StartBox from './startBox';
+import GoalBox from './goalBox';
  
 export class Handler extends React.Component {
   constructor(props) {
@@ -36,18 +39,22 @@ export class Handler extends React.Component {
   render() {
     const cellState = this.props.isClick;
     var cell_w=this.props.cell_w;
-    var cell_arr = [<Box w={cell_w} />,<BlankBox w={cell_w} />, <Wall w={cell_w} />];
-    var options = ['a', 'b', 'c'];
+    var cell_arr={
+      'a' : <Box w={cell_w} />,
+      'b' : <BlankBox w={cell_w} />,
+      'c' : <Wall w={cell_w} />,
+      'd' : <SearchedBox w={cell_w} />,
+      'start': <StartBox w={cell_w} />,
+      'goal': <GoalBox w={cell_w} />,
+    }
 
-    var index = options.indexOf(cellState);
 
-    var box = cell_arr[index];
+    var box = cell_arr[cellState];
 
 
     return (
         <div id={this.props.id} onClick={()=>this.props.onClick(this.props.rn,this.props.cn)}  style={{display:"inline-block",margin:'0px',border:".1px"}} >
-
-        {index!=-1?(box):(<BlankBox w={cell_w}/>)}
+        {box}
       </div>
     );
   }
@@ -61,3 +68,6 @@ export default Handler;
         // ) : (
         //   <Wall w={cell_w} />
         // )}
+
+
+                // {index!=-1?(box):(<BlankBox w={cell_w}/>)}

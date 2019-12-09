@@ -1,5 +1,6 @@
 import React from "react";
 
+import ClickAction from './clickAction'
 export class Panel extends React.Component {
 
   constructor(props){
@@ -21,6 +22,7 @@ export class Panel extends React.Component {
 			<option value="d">D</option>
       	</select>
         <button onClick={this.props.onClick}>Animate</button>
+        <ClickAction onClick={(ac)=>this.props.clickAction_func(ac)} />
       </div>
     );
 }

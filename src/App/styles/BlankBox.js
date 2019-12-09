@@ -10,6 +10,7 @@ export const BlankBox = styled.div`
   margin:0px;
   padding:0px;
   border:.1px solid #0ff5;
+  box-sizing: border-box;
 `
  
 export default BlankBox;
