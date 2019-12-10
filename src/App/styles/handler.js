@@ -39,13 +39,14 @@ export class Handler extends React.Component {
   render() {
     const cellState = this.props.isClick;
     var cell_w=this.props.cell_w;
+    var cell_h=this.props.cell_h;
     var cell_arr={
-      'a' : <Box w={cell_w} />,
-      'b' : <BlankBox w={cell_w} />,
-      'c' : <Wall w={cell_w} />,
-      'd' : <SearchedBox w={cell_w} />,
-      'start': <StartBox w={cell_w} />,
-      'goal': <GoalBox w={cell_w} />,
+      'a' : <Box w={cell_w} h={cell_h} />,
+      'b' : <BlankBox w={cell_w} h={cell_h} />,
+      'c' : <Wall w={cell_w} h={cell_h} />,
+      'd' : <SearchedBox w={cell_w} h={cell_h} />,
+      'start': <StartBox w={cell_w} h={cell_h} />,
+      'goal': <GoalBox w={cell_w} h={cell_h} />,
     }
 
 

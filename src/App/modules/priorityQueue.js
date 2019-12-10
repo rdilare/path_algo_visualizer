@@ -9,6 +9,8 @@ export class QElement{
 		this.x = x;
 		this.y = y;
 		this.heuristic = Infinity;
+		this.f=0;
+		this.g=0;
 		this.parent = NaN;
 	}
 }

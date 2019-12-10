@@ -4,13 +4,16 @@ import  { keyframes } from 'styled-components';
 export const keyFrameExampleOne = keyframes`
   0% {
     background: orange;
+    border-radius:100%;
+    border: 15px solid #fff;
+
   }
   50%{
     background:red;
     border-radius:50%;
   }
   100% {
-    background: #f42;
+    background: #ff0;
   }
 `
 
@@ -44,7 +47,7 @@ export const keyFrameSearched = keyframes`
     border-radius:50%;
   }
   100% {
-    background: #0f9;
+    background: #0ff;
   }
 `
 

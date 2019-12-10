@@ -14,14 +14,16 @@ export class Panel extends React.Component {
 	render() {
 
     return (
-      <div id='panel' style={{margin:'0px',padding:'0px',background:"#ff8",width:this.props.w,height:this.props.h,display:"inline-block"}}>
-      	<select id='select_1'  onChange={this.onchange.bind(this)}>
-      		<option value="a">A</option>
-			<option value="b">B</option>
-			<option value="c">C</option>
-			<option value="d">D</option>
+      <div  id='panel' style={{margin:'0px',padding:'0px',background:"#dff",width:this.props.w,height:this.props.h,display:"inline-block"}}>
+        <h1 style={{textAlign:"center"}}>Pathfinding Visualizer</h1>
+        <select className="algo-selector" id='select_1'  onChange={this.onchange.bind(this)}>
+          <option value="Nothing">Select Algorithm</option>
+      		<option value="a_star">A*</option>
+    			<option value="bfs">BFS</option>
+    			<option value="c">C</option>
+    			<option value="d">D</option>
       	</select>
-        <button onClick={this.props.onClick}>Animate</button>
+        <div className="start_animation" onClick={this.props.onClick}>START</div>
         <ClickAction onClick={(ac)=>this.props.clickAction_func(ac)} />
       </div>
     );

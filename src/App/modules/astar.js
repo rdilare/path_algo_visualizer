@@ -3,7 +3,7 @@ import {QElement,PriorityQueue} from "./priorityQueue"
 
 
 
-export function Astar(map,start,goal){
+export function a_star(map,start,goal){
 
   function dist(a,b){
   return Math.abs(a.x-b.x) + Math.abs(a.y-b.y)
@@ -14,6 +14,11 @@ export function Astar(map,start,goal){
         [0,1],
         [-1,0],
         [0,-1]];
+
+  var searcher_node=[];
+
+    var start = new QElement(start[0],start[1]);
+    var goal = new QElement(goal[0],goal[1]);
 
 var f=0;
 var g=dist(start,goal);
@@ -46,16 +51,21 @@ while(!pq.empty()){
     if(map[neighbour.x][neighbour.y]==1){
       continue;
     }else{
-      f = current.heuristic + dist(current,neighbour);
+      f = current.f + dist(current,neighbour);
       g = dist(neighbour,goal);
       h = f+g;
       if (h<neighbour.heuristic){
       // console.log(neighbour.x,neighbour.y,neighbour.heuristic,':', f,g,h);
         neighbour.heuristic = h;
+        neighbour.f=f;
+        neighbour.g=g
         neighbour.parent = current;
         if(!visited[neighbour.x][neighbour.y]){
         pq.enqueue(neighbour);
         visited[neighbour.x][neighbour.y]=true;
+        if(dist(neighbour,start)!=0 && dist(neighbour,goal)!=0){
+        searcher_node.push([neighbour.x,neighbour.y]);
+        }
         }
       }
 
@@ -80,7 +90,11 @@ if (dist(current,goal)==0){
 }
 // Path.push([start.x, start.y])
 Path.shift()
-return Path;
+
+return ({
+  'res1' : Path.reverse(),
+  'res2': searcher_node,
+});
 }
 
-export default Astar;
+export default a_star;

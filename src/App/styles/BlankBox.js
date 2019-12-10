@@ -5,7 +5,7 @@ export const BlankBox = styled.div`
   display: grid;
   background: #fff;
   width: ${props=>props.w};
-  height: 30px;
+  height: ${props=>props.h};
   position: relative;
   margin:0px;
   padding:0px;

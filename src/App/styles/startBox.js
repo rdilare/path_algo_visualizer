@@ -6,7 +6,7 @@ export const StartBox = styled.div`
   display: inline-block;
   background: #f00;
   width: ${props=>props.w};
-  height: 30px;
+  height: ${props=>props.h};
   position: relative;
   margin:0px;
   border:.1px solid #0001;
