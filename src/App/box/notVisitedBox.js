@@ -1,7 +1,7 @@
 import styled from 'styled-components';
  
  
-export const BlankBox = styled.div`
+export const NotVisitedBox = styled.div`
   display: grid;
   background: #fff;
   width: ${props=>props.w};
@@ -9,8 +9,8 @@ export const BlankBox = styled.div`
   position: relative;
   margin:0px;
   padding:0px;
-  border:.1px solid #0ff5;
+  border:.1px solid #ffa8b6;//#0ff5;
   box-sizing: border-box;
 `
  
-export default BlankBox;
+export default NotVisitedBox;

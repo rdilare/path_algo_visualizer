@@ -7,7 +7,7 @@ class Node{
 	}
 }
 
-export function bfs(map,start,goal){
+export function dfs(map,start,goal){
 
 	function dist(a,b){
 	  return Math.abs(a.x-b.x) + Math.abs(a.y-b.y)
@@ -19,7 +19,7 @@ export function bfs(map,start,goal){
 			    [-1,0],
 			    [0,-1]];
 
-	var searcher_node = [];
+	var searched_node = [];
 	var Path = [];
 
 	var start = new Node(start[0],start[1])
@@ -30,12 +30,10 @@ export function bfs(map,start,goal){
 
 	var current = start;
 
+	var doBreak=false;
+
 	while(pq.length!=0){
-		current = pq.shift();
-		if(dist(current,goal)==0){
-			goal = current;
-			break;
-		}
+		current = pq.pop();
 		for(let ac of action){
 			var neighbour = new Node(0,0);
 			neighbour.x = current.x + ac[0];
@@ -51,10 +49,20 @@ export function bfs(map,start,goal){
 					pq.push(neighbour);
 					visited[neighbour.x][neighbour.y]=true;
 					if(dist(neighbour,start)!=0 && dist(neighbour,goal)!=0){
-        			searcher_node.push([neighbour.x,neighbour.y]);
+        			searched_node.push([neighbour.x,neighbour.y]);
         			}
 				}
 			}
+
+			if(dist(neighbour,goal)==0){
+				goal = neighbour;
+				current = neighbour;
+				doBreak=true;
+				break;
+			}
+		}
+		if(doBreak){
+			break;
 		}
 	}
 
@@ -72,9 +80,9 @@ export function bfs(map,start,goal){
 
 	return ({
 		'res1' : Path.reverse(),
-		'res2': searcher_node,
+		'res2': searched_node,
 	});
 
 }
 
-export default bfs;
+export default dfs;

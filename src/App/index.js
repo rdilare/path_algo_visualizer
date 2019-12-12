@@ -4,9 +4,10 @@ import React from 'react';
 import Panel from "./panel";
 import Grid from "./grid";
 import ReactDOM from 'react-dom';
-import {QElement,PriorityQueue} from "./modules/priorityQueue"
-import a_star from "./modules/astar"
-import bfs from "./modules/bfsSearch"
+import {QElement,PriorityQueue} from "./algorithm/priorityQueue"
+import a_star from "./algorithm/astar"
+import bfs from "./algorithm/bfsSearch"
+import dfs from "./algorithm/dfsSearch"
   
 export class App extends React.Component {
 
@@ -33,6 +34,11 @@ export class App extends React.Component {
       clickAction:'start',
     }
   }
+
+  a_star = a_star;
+  bfs = bfs;
+  dfs = dfs;
+
 
   set_algo(val){
     // var val = document.getElementById('select').value;
@@ -129,6 +135,7 @@ export class App extends React.Component {
     var algo_arr={
         'a_star' : this.a_star,
         'bfs' : this.bfs,
+        'dfs' : this.dfs,
     };
     var algo = algo_arr[this.state.algorithm];
     var res = algo(map,start,goal);
@@ -138,8 +145,8 @@ export class App extends React.Component {
     var timeA = 0;
 
     for(let i=0; i<searched_nodes.length;i++){
-      setTimeout(()=>this.update(searched_nodes[i][0],searched_nodes[i][1],'d'),(i+1)*50);
-      timeA+=50;
+      setTimeout(()=>this.update(searched_nodes[i][0],searched_nodes[i][1],'d'),(i+1)*120);
+      timeA+=120;
     }
 
     var timeB = 0;
@@ -170,8 +177,6 @@ export class App extends React.Component {
 
 
 
- a_star = a_star;
- bfs = bfs;
 
 
   render() {

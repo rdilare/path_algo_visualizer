@@ -1,5 +1,5 @@
 import React from "react";
-import Handler from './styles/handler';
+import Cell from './box/cell';
 
 export class Grid extends React.Component {
 
@@ -15,12 +15,29 @@ export class Grid extends React.Component {
     	return String([i,j]);
   	};
 
+  	var gridStyle={
+  		left:"1vw",
+  		margin:'0px',
+  		padding:'0px',
+  		background:"#0ff2",
+  		width:this.props.w,
+  		height:this.props.h,
+  		display:"inline",
+  		position:'relative'
+  	};
+
+  	var gridRowStyle={
+  		margin:'-3px',
+  		display:"inline-block",
+  		position:'relative',
+  	};
+
     return (
-      <div id='grid' style={{left:"1vw",margin:'0px',padding:'0px',background:"#0ff2",width:this.props.w,height:this.props.h,display:"inline",position:'relative'}}>
+      <div id='grid' style={gridStyle}>
 	      {Array(rows).fill(1).map((x,i)=>{
-	      		return (<div id={getid(i,5)} style={{margin:'-3px',display:"inline-block",position:'relative'}} key={i}>
+	      		return (<div id={getid(i,5)} style={gridRowStyle} key={i}>
 			      			{Array(cols).fill(1).map((x,j)=>{
-			      				return <Handler rn={i} cn={j} cell_w={cell_w} cell_h={cell_h} id={j} onClick={(i,j)=>this.props.onClick(i,j)} isClick={this.props.isClick[i][j]} key={j}/>;
+			      				return <Cell rn={i} cn={j} cell_w={cell_w} cell_h={cell_h} id={j} onClick={(i,j)=>this.props.onClick(i,j)} isClick={this.props.isClick[i][j]} key={j}/>;
 			      				})
 			      			}
 			      		</div>);
@@ -32,13 +49,4 @@ export class Grid extends React.Component {
 }
 
 export default Grid;
-
-
-
-
-
-
-
-
-
 

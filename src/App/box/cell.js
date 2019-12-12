@@ -1,13 +1,13 @@
 import React from 'react';
  
-import Box from './Box';
-import BlankBox from './BlankBox'
-import Wall from './wall';
-import SearchedBox from './searched';
+import PathBox from './pathBox';
+import NotVisitedBox from './notVisitedBox'
+import WallBox from './wallBox';
+import VisitedBox from './visitedBox';
 import StartBox from './startBox';
 import GoalBox from './goalBox';
  
-export class Handler extends React.Component {
+export class Cell extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isClick: false }
@@ -41,10 +41,10 @@ export class Handler extends React.Component {
     var cell_w=this.props.cell_w;
     var cell_h=this.props.cell_h;
     var cell_arr={
-      'a' : <Box w={cell_w} h={cell_h} />,
-      'b' : <BlankBox w={cell_w} h={cell_h} />,
-      'c' : <Wall w={cell_w} h={cell_h} />,
-      'd' : <SearchedBox w={cell_w} h={cell_h} />,
+      'a' : <PathBox w={cell_w} h={cell_h} />,
+      'b' : <NotVisitedBox w={cell_w} h={cell_h} />,
+      'c' : <WallBox w={cell_w} h={cell_h} />,
+      'd' : <VisitedBox w={cell_w} h={cell_h} />,
       'start': <StartBox w={cell_w} h={cell_h} />,
       'goal': <GoalBox w={cell_w} h={cell_h} />,
     }
@@ -61,7 +61,7 @@ export class Handler extends React.Component {
   }
 }
  
-export default Handler;
+export default Cell;
 
 
         // {cellState==='b' ? (

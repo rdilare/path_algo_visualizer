@@ -2,7 +2,7 @@ import styled from 'styled-components';
  
 import { keyFrameExampleOne } from './KeyFrames';
  
-export const Box = styled.div`
+export const PathBox = styled.div`
   display: inline-block;
   background: #ff0;
   width: ${props=>props.w};
@@ -16,4 +16,4 @@ export const Box = styled.div`
   animation: ${keyFrameExampleOne} 1s ease-in 0s 1;
 `
  
-export default Box;
+export default PathBox;

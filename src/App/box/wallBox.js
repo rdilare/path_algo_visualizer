@@ -2,9 +2,9 @@ import styled from 'styled-components';
  
 import { keyFrameWall } from './KeyFrames';
  
-export const Wall = styled.div`
+export const WallBox = styled.div`
   display: inline-block;
-  background: #333;
+  background: #a28089;//#333;
   width: ${props=>props.w};
   height: ${props=>props.h};
   position: relative;
@@ -17,4 +17,4 @@ export const Wall = styled.div`
   animation: ${keyFrameWall} .3s ease-in-out 0s 1;
 `
  
-export default Wall;
+export default WallBox;

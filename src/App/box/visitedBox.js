@@ -2,9 +2,9 @@ import styled from 'styled-components';
  
 import { keyFrameSearched } from './KeyFrames';
  
-export const SearchedBox = styled.div`
+export const VisitedBox = styled.div`
   display: inline-block;
-  background: #0ff;
+  background: #51e2f5;//#0ff;
   width: ${props=>props.w};
   height: ${props=>props.h};
   position: relative;
@@ -16,4 +16,4 @@ export const SearchedBox = styled.div`
   animation: ${keyFrameSearched} 1s linear 0s 1;
 `
  
-export default SearchedBox;
+export default VisitedBox;
