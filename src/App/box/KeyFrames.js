@@ -24,12 +24,12 @@ export const keyFrameWall = keyframes`
     transform:scale(.8);
 
   }
-  95% {
+  80% {
     transform:scale(1.2);
 
   }
   100% {
-    background: #466;
+    background: #630;
     transform:scale(1)
 
 

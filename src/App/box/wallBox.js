@@ -4,7 +4,7 @@ import { keyFrameWall } from './KeyFrames';
  
 export const WallBox = styled.div`
   display: inline-block;
-  background: #a28089;//#333;
+  background: #421;//#333;
   width: ${props=>props.w};
   height: ${props=>props.h};
   position: relative;

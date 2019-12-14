@@ -23,7 +23,7 @@ export class Panel extends React.Component {
 
     return (
       <div  id='panel' style={panelStyle}>
-        <h1 style={{textAlign:"center"}}>Pathfinding Visualizer</h1>
+        <h1 style={{textAlign:"center", color:'#123'}}>Pathfinding Visualizer</h1>
         <select className="algo-selector" id='select_1'  onChange={this.onchange.bind(this)}>
           <option value="Nothing">Select Algorithm</option>
       		<option value="a_star">A*</option>
