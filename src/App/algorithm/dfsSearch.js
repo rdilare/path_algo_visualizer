@@ -41,7 +41,7 @@ export function dfs(map,start,goal){
 			if(neighbour.x>=map.length || neighbour.x<0 || neighbour.y>=map[0].length || neighbour.y<0){
 				continue;
 			}
-			if(map[neighbour.x][neighbour.y]==1){
+			if(map[neighbour.x][neighbour.y]===1){
 				continue;
 			}else{
 				if(!visited[neighbour.x][neighbour.y]){
@@ -54,7 +54,7 @@ export function dfs(map,start,goal){
 				}
 			}
 
-			if(dist(neighbour,goal)==0){
+			if(dist(neighbour,goal)===0){
 				goal = neighbour;
 				current = neighbour;
 				doBreak=true;
@@ -66,7 +66,7 @@ export function dfs(map,start,goal){
 		}
 	}
 
-	if (dist(current,goal)==0){
+	if (dist(current,goal)===0){
 		var path_node = goal;
 		while(dist(path_node,start)!=0){
 			Path.push([path_node.x,path_node.y])

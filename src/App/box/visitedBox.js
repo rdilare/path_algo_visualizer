@@ -4,7 +4,7 @@ import { keyFrameSearched } from './KeyFrames';
  
 export const VisitedBox = styled.div`
   display: inline-block;
-  background: #51e2f5;//#0ff;
+  background: #9df9ef;//#0ff;
   width: ${props=>props.w};
   height: ${props=>props.h};
   position: relative;

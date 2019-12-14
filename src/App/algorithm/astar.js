@@ -6,95 +6,93 @@ import {QElement,PriorityQueue} from "./priorityQueue"
 export function a_star(map,start,goal){
 
   function dist(a,b){
-  return Math.abs(a.x-b.x) + Math.abs(a.y-b.y)
-  }
-  var visited = Array(map.length).fill(0).map(()=>Array(map[0].length).fill(false));
-  
-  var action = [[1,0],
+    return Math.abs(a.x-b.x) + Math.abs(a.y-b.y)
+    }
+    var visited = Array(map.length).fill(0).map(()=>Array(map[0].length).fill(false));
+
+    var action = [[1,0],
         [0,1],
         [-1,0],
         [0,-1]];
 
-  var searcher_node=[];
+    var searcher_node=[];
 
     var start = new QElement(start[0],start[1]);
     var goal = new QElement(goal[0],goal[1]);
 
-var f=0;
-var g=dist(start,goal);
-var h=f+g;
-start.heuristic = h;
+    var f=0;
+    var g=dist(start,goal);
+    var h=f+g;
+    start.heuristic = h;
 
+    var pq = new PriorityQueue();
+    pq.enqueue(start);
 
-var pq = new PriorityQueue();
-pq.enqueue(start);
+    var current = start;
+    var step = 0;
+    while(!pq.empty()){
+        if(step>2000){break;}
+        step=step+1;
+        current = pq.dequeue();
+        if(dist(current,goal)===0){
+            // console.log("break",goal);
+            goal = current;
+            break;
+        }
+        for(let a of action){
+            var neighbour = new QElement(0,0);
+            neighbour.x = current.x+a[0];
+            neighbour.y = current.y+a[1];
+            if(neighbour.x>=map.length || neighbour.x<0 || neighbour.y>=map[0].length || neighbour.y<0){
+                continue;
+            }
+            if(map[neighbour.x][neighbour.y]===1){
+                continue;
+            }else{
+                f = current.f + dist(current,neighbour);
+                g = dist(neighbour,goal);
+                h = f+g;
+                if (h<neighbour.heuristic){
+                    // console.log(neighbour.x,neighbour.y,neighbour.heuristic,':', f,g,h);
+                    neighbour.heuristic = h;
+                    neighbour.f=f;
+                    neighbour.g=g
+                    neighbour.parent = current;
+                    if(!visited[neighbour.x][neighbour.y]){
+                        pq.enqueue(neighbour);
+                        visited[neighbour.x][neighbour.y]=true;
+                        if(dist(neighbour,start)!=0 && dist(neighbour,goal)!=0){
+                            searcher_node.push([neighbour.x,neighbour.y]);
+                        }
+                    }
+                }
 
+            }
 
-var current = start;
-var step = 0;
-while(!pq.empty()){
-  if(step>2000){break;}
-  step=step+1;
-  current = pq.dequeue();
-  if(dist(current,goal)==0){
-    // console.log("break",goal);
-    goal = current;
-    break;
-  }
-  for(let a of action){
-    var neighbour = new QElement(0,0);
-    neighbour.x = current.x+a[0];
-    neighbour.y = current.y+a[1];
-    if(neighbour.x>=map.length || neighbour.x<0 || neighbour.y>=map[0].length || neighbour.y<0){
-      continue;
+        }
+
     }
-    if(map[neighbour.x][neighbour.y]==1){
-      continue;
+
+    var Path = [];
+
+    if (dist(current,goal)===0){
+        let path_node = goal;
+        while(dist(path_node,start)!=0){
+            // console.log('('+path_node.x+','+path_node.y+')');
+            Path.push([path_node.x,path_node.y])
+            path_node = path_node.parent;
+        }
     }else{
-      f = current.f + dist(current,neighbour);
-      g = dist(neighbour,goal);
-      h = f+g;
-      if (h<neighbour.heuristic){
-      // console.log(neighbour.x,neighbour.y,neighbour.heuristic,':', f,g,h);
-        neighbour.heuristic = h;
-        neighbour.f=f;
-        neighbour.g=g
-        neighbour.parent = current;
-        if(!visited[neighbour.x][neighbour.y]){
-        pq.enqueue(neighbour);
-        visited[neighbour.x][neighbour.y]=true;
-        if(dist(neighbour,start)!=0 && dist(neighbour,goal)!=0){
-        searcher_node.push([neighbour.x,neighbour.y]);
-        }
-        }
-      }
-
+        console.log('No Path');
+        Path = [];
     }
+    // Path.push([start.x, start.y])
+    Path.shift();
 
-  }
-
-}
-
-var Path = [];
-
-if (dist(current,goal)==0){
-  let path_node = goal;
-  while(dist(path_node,start)!=0){
-    // console.log('('+path_node.x+','+path_node.y+')');
-    Path.push([path_node.x,path_node.y])
-    path_node = path_node.parent;
-  }
-}else{
-  console.log('No Path');
-  Path = [];
-}
-// Path.push([start.x, start.y])
-Path.shift()
-
-return ({
-  'res1' : Path.reverse(),
-  'res2': searcher_node,
-});
-}
+    return ({
+        'res1' : Path.reverse(),
+        'res2': searcher_node,
+    });
+    }
 
 export default a_star;

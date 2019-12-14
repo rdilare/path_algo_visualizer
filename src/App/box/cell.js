@@ -16,26 +16,6 @@ export class Cell extends React.Component {
     this.setState({ isClick: !this.state.isClick });
   }
 
-  loop=()=>{
-    function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
-  }
-
-    // console.log(this.props.id);
-    // document.getElementById(this.props.id).className='A';
-    // sleep(3000);
-    // document.getElementById(this.props.id).className='B';
-
-    for(let i=0;i<5;i++){
-    setTimeout(()=>{
-      document.getElementById(i).className='B';
-      this.setState({ isClick: !this.state.isClick });
-    },i*200);
-  }
-
-  }
- 
   render() {
     const cellState = this.props.isClick;
     var cell_w=this.props.cell_w;
@@ -62,13 +42,3 @@ export class Cell extends React.Component {
 }
  
 export default Cell;
-
-
-        // {cellState==='b' ? (
-        //   <Box w={cell_w} />
-        // ) : (
-        //   <Wall w={cell_w} />
-        // )}
-
-
-                // {index!=-1?(box):(<BlankBox w={cell_w}/>)}

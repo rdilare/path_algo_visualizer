@@ -3,11 +3,11 @@ import React from 'react';
 
 import Panel from "./panel";
 import Grid from "./grid";
-import ReactDOM from 'react-dom';
-import {QElement,PriorityQueue} from "./algorithm/priorityQueue"
+
 import a_star from "./algorithm/astar"
 import bfs from "./algorithm/bfsSearch"
 import dfs from "./algorithm/dfsSearch"
+import dijkstra from "./algorithm/dijkstra"
   
 export class App extends React.Component {
 
@@ -16,8 +16,8 @@ export class App extends React.Component {
 
     this.rows = 12;
     this.cols = 20;
-    var start = [0,0];
-    var goal = [5,5];
+    var start = [5,1];
+    var goal = [5,8];
     var isClick = Array(this.rows).fill(1).map((x)=>(Array(this.cols).fill('b')));
     var map = Array(this.rows).fill(1).map((x)=>(Array(this.cols).fill(0)));
     isClick[start[0]][start[1]] = 'start';
@@ -38,7 +38,7 @@ export class App extends React.Component {
   a_star = a_star;
   bfs = bfs;
   dfs = dfs;
-
+  dijkstra = dijkstra;
 
   set_algo(val){
     // var val = document.getElementById('select').value;
@@ -103,16 +103,12 @@ export class App extends React.Component {
     var map = this.state.map;
     var start = this.state.start;
     var goal = this.state.goal;
-    // var start = new QElement(sp[0],sp[1]);
-    // var goal = new QElement(gp[0],gp[1]);
-
 
     if(this.state.algorithm==="Nothing"){
       alert('Select Algorithm');
       return 0;
     }
 
-    var disabled = this.state.disabled;
     this.setState({
       disabled: true,
     });
@@ -136,6 +132,7 @@ export class App extends React.Component {
         'a_star' : this.a_star,
         'bfs' : this.bfs,
         'dfs' : this.dfs,
+        'dijkstra' : this.dijkstra,
     };
     var algo = algo_arr[this.state.algorithm];
     var res = algo(map,start,goal);
@@ -145,8 +142,8 @@ export class App extends React.Component {
     var timeA = 0;
 
     for(let i=0; i<searched_nodes.length;i++){
-      setTimeout(()=>this.update(searched_nodes[i][0],searched_nodes[i][1],'d'),(i+1)*120);
-      timeA+=120;
+      setTimeout(()=>this.update(searched_nodes[i][0],searched_nodes[i][1],'d'),(i+1)*100);
+      timeA+=100;
     }
 
     var timeB = 0;
@@ -180,11 +177,6 @@ export class App extends React.Component {
 
 
   render() {
-  	function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
-	}
-
 
     return (
       // <Final/>

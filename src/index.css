@@ -12,7 +12,7 @@ ol, ul {
   display: inline-block;
   /*width:100px;*/
   /*height: 50px;*/
-  background: #476;
+  background: #135;
   color:#fff;
   border: 0px solid #0f0;
   border-radius: 10px;
@@ -27,12 +27,12 @@ ol, ul {
 
 .algo-selector{
   position: absolute;
-  background: #dff;
-  color:#054;
+  background: #0ff;
+  color:#046;
   margin:0px;
   left:2%;
   padding: 15px 10px;
-  border: 1px solid #476;
+  border: 1px solid #046;
   border-radius: 10px;
   box-sizing: border-box;
   font-weight: bold;
@@ -59,6 +59,6 @@ ol, ul {
 
 .start_animation:hover{
   background: #ff0;
-  color:#476;
+  color:#135;
   cursor: pointer;
 }

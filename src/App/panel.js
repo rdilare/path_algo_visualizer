@@ -15,7 +15,7 @@ export class Panel extends React.Component {
 	render() {
     var panelStyle={margin:'0px',
     padding:'0px',
-    background: '#9df9ef',//"#dff",
+    background: '#51e2f5',//"#dff",
     width:this.props.w,
     height:this.props.h,
     display:"inline-block"};
@@ -29,7 +29,7 @@ export class Panel extends React.Component {
       		<option value="a_star">A*</option>
     			<option value="bfs">BFS</option>
     			<option value="dfs">DFS</option>
-    			<option value="d">D</option>
+    			<option value="dijkstra">Dijkstra</option>
       	</select>
         <div className="start_animation" onClick={this.props.onClick}>START</div>
         <ClickAction onClick={(ac)=>this.props.clickAction_func(ac)} />

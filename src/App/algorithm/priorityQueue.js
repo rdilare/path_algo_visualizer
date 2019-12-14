@@ -23,7 +23,6 @@ export class PriorityQueue{
 
 	enqueue(item){
 		var contain = false;
-		var item = item;
 		for(let i=0;i<this.items.length;++i){
 			if(item.heuristic<this.items[i].heuristic){
 				this.items.splice(i,0,item);
@@ -36,7 +35,7 @@ export class PriorityQueue{
 		}
 	}
 	dequeue(){
-		if(this.items.length==0){
+		if(this.items.length===0){
 			return -1;
 		}
 		let item = this.items[0];
@@ -51,7 +50,7 @@ export class PriorityQueue{
 		return item;
 	}
 	empty(){
-		return this.items.length==0;
+		return this.items.length===0;
 	}
 }
 

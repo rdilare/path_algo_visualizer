@@ -1,26 +1,27 @@
 
 import  { keyframes } from 'styled-components';
  
-export const keyFrameExampleOne = keyframes`
+export const keyFramePath = keyframes`
   0% {
     background: orange;
-    border-radius:100%;
-    border: 15px solid #fff;
+    //border-radius:100%;
+    // border: 15px solid #fff;
 
   }
   50%{
     background:red;
-    border-radius:50%;
+    // border-radius:50%;
   }
   100% {
-    background: #ff0;
+    background: #0f0;
+    transform:rotate(90deg);
   }
 `
 
 export const keyFrameWall = keyframes`
   0% {
     background: #000;
-    border-radius:100%;
+    transform:scale(.8);
 
   }
   95% {
@@ -29,7 +30,6 @@ export const keyFrameWall = keyframes`
   }
   100% {
     background: #466;
-    border-radius:0%;
     transform:scale(1)
 
 

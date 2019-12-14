@@ -4,7 +4,7 @@ import { keyFrameGoalBox } from './KeyFrames';
  
 export const GoalBox = styled.div`
   display: inline-block;
-  background: #0f0;
+  background: #09f;
   width: ${props=>props.w};
   height: ${props=>props.h};
   position: relative;
